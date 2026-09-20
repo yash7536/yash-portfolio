@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  --color-surface: #f9f9f9;
+  --color-surface-card: #ffffff;
+  --color-surface-2: #eeeeee;
+  --color-surface-3: #f3f3f3;
+
+  --color-border: #dadada;
+  --color-border-strong: #1a1a1a;
+
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #4a4a4a;
+  --color-muted: #666666;
+  --color-muted-2: #5f5e5e;
+  --color-subtle: #777777;
+  --color-outline-variant: #707973;
+
+  --color-accent: #0f533a;
+  --color-accent-deep: #003a26;
+  --color-error: #ba1a1a;
+}
+
+@theme inline {
+  --color-surface: var(--color-surface);
+  --color-surface-card: var(--color-surface-card);
+  --color-surface-2: var(--color-surface-2);
+  --color-surface-3: var(--color-surface-3);
+
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-muted: var(--color-muted);
+  --color-muted-2: var(--color-muted-2);
+  --color-subtle: var(--color-subtle);
+  --color-outline-variant: var(--color-outline-variant);
+
+  --color-accent: var(--color-accent);
+  --color-accent-deep: var(--color-accent-deep);
+  --color-error: var(--color-error);
+
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Motion tokens — one consistent, restrained timing system for the whole
+   site. FAST = buttons/links, MEDIUM = cards/tabs/controls, SLOW = section
+   entrances/charts/Story transitions. One easing curve throughout. */
+:root {
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms;
+  --dur-medium: 260ms;
+  --dur-slow: 520ms;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--slide-dir, 1) * 18px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll-reveal primitive, driven by the useReveal hook toggling
+   data-revealed on the element once it enters the viewport. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-slow) var(--ease-premium),
+    transform var(--dur-slow) var(--ease-premium);
+}
+[data-reveal="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons and button-style links share this shape across the site
+   ("rounded border …") — a single rule gives every one of them the same
+   restrained hover/press/focus feedback without touching each call site. */
+a.rounded.border,
+button.rounded.border {
+  transition:
+    background-color var(--dur-medium) var(--ease-premium),
+    border-color var(--dur-medium) var(--ease-premium),
+    color var(--dur-medium) var(--ease-premium),
+    transform var(--dur-fast) var(--ease-premium);
+}
+a.rounded.border:active,
+button.rounded.border:active {
+  transform: scale(0.98);
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  transition: outline-offset var(--dur-fast) var(--ease-premium);
+}
+
+.external-arrow {
+  display: inline-block;
+  transition: transform var(--dur-medium) var(--ease-premium);
+}
+a:hover .external-arrow {
+  transform: translate(2px, -2px);
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  a.rounded.border:active,
+  button.rounded.border:active {
+    transform: none;
+  }
+}
