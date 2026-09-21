@@ -22,6 +22,7 @@ B.Tech Computer Science & Engineering student at Amity University Lucknow, focus
 
 ## Links
 
+- Portfolio: [yash-portfolio-one-sand.vercel.app](https://yash-portfolio-one-sand.vercel.app/)
 - GitHub: [github.com/yash7536](https://github.com/yash7536)
 - LinkedIn: [linkedin.com/in/vishnuyashpandey](https://linkedin.com/in/vishnuyashpandey)
 
