@@ -65,9 +65,6 @@ export default function Home() {
         <section className="w-full bg-surface py-16 md:py-24" id="hero">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="w-full max-w-4xl flex flex-col items-start space-y-6">
-              <Reveal as="div" delay={0} className="text-[11px] font-mono uppercase tracking-widest text-subtle">
-                AI Product Management
-              </Reveal>
               <Reveal as="h1" delay={40} className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-ink tracking-tight leading-tight w-full max-w-3xl">
                 I build AI products from messy problems to working, tested workflows.
               </Reveal>
