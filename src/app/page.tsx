@@ -49,12 +49,82 @@ const aboutPoints = [
   },
 ];
 
-const education = [
-  { name: "Amity University Lucknow", years: "2023–2027", detail: "B.Tech — Computer Science & Engineering" },
-  { name: "SRM Institute of Science and Technology, Chennai", years: "2022–2023", detail: "B.Tech — Computer Science & Engineering" },
-  { name: "MIT World Peace University, Pune", years: "2022", detail: "BBA (Digital Marketing) — 1 semester" },
-  { name: "City Montessori School, Lucknow", years: "2019–2021", detail: "ISC (PCM) — 90% · 2021 · ICSE — 87% · 2019" },
+const resumeExperience = {
+  org: "Tata Teleservices Limited",
+  role: "AI Product Manager Intern",
+  meta: "May–Jun 2026 · Noida",
+  bullets: [
+    "Competitive benchmarking",
+    "Data-backed product & client pitches",
+    "PRDs, user stories & acceptance criteria",
+    "GenAI exploration",
+    "Network-operations exposure",
+  ],
+};
+
+const resumeProjects = [
+  {
+    name: "Noto",
+    role: "AI Meeting → Execution Copilot",
+    proof: "18 transcripts · 54 ground-truth items · 78.0 F1",
+  },
+  {
+    name: "SquadPay",
+    role: "AI-Assisted Bill Splitting",
+    proof: "15 evaluated receipts · 69/69 product tests",
+  },
+  {
+    name: "NetSense AI",
+    role: "Network Operations Prototype",
+    proof: "6 telemetry profiles · 5/5 resolvable scenarios",
+  },
 ];
+
+const resumeEducation = [
+  {
+    name: "Amity University Lucknow",
+    years: "2023–2027",
+    detail: "B.Tech — Computer Science & Engineering · CGPA 7.10",
+  },
+  {
+    name: "City Montessori School, Lucknow",
+    years: "2021",
+    detail: "ISC — PCM · 90%",
+  },
+];
+
+const resumeCertifications = [
+  "IBM AI Product Manager",
+  "EA Product Management",
+  "Google Agile PM",
+  "Datacom Partnering with AI",
+  "Adobe University Hackathon 2026",
+];
+
+const resumeSkills = [
+  "AI Product Management",
+  "Product Discovery",
+  "Product Strategy",
+  "PRDs",
+  "AI Evaluation",
+  "LLM Evaluation",
+  "User Testing",
+  "Guardrails",
+  "Human-in-the-Loop",
+  "Generative AI",
+  "Agile",
+];
+
+function ResumeSectionLabel({ children }: { children: string }) {
+  return (
+    <div className="mb-4">
+      <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-ink font-medium">
+        {children}
+      </h3>
+      <div className="mt-2 border-t border-border-strong" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -198,70 +268,85 @@ export default function Home() {
         </section>
 
         {/* Resume */}
-        <section className="w-full bg-surface py-16" id="resume">
+        <section className="w-full bg-surface py-16 md:py-20" id="resume">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-              <Reveal className="lg:col-span-4">
-                <h2 className="font-serif text-3xl sm:text-4xl text-ink font-normal mb-3">
+            <div className="max-w-2xl mx-auto">
+              <Reveal className="text-center">
+                <div className="text-[11px] font-mono uppercase tracking-widest text-subtle mb-2">
+                  Resume
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl text-ink font-normal">
                   Experience &amp; Education
                 </h2>
-                <p className="text-ink-soft">
-                  Early-career technical product work in AI systems and network
-                  operations.
-                </p>
               </Reveal>
-              <div className="lg:col-span-8 space-y-6">
-                <Reveal className="p-6 lg:p-8 bg-surface-card shadow-sm border border-border/20 rounded space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <div className="mt-6 border-t border-border/60" />
+
+              <div className="mt-10 space-y-10">
+                <Reveal>
+                  <ResumeSectionLabel>Experience</ResumeSectionLabel>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
                     <div>
-                      <h3 className="font-sans text-lg text-ink">Tata Teleservices</h3>
-                      <span className="text-xs font-mono text-accent font-medium">
-                        AI Product Manager Intern
-                      </span>
+                      <h4 className="font-sans text-base sm:text-lg font-semibold text-ink">
+                        {resumeExperience.org}
+                      </h4>
+                      <p className="text-xs font-mono text-accent font-medium">
+                        {resumeExperience.role}
+                      </p>
                     </div>
-                    <span className="text-xs font-mono text-muted">
-                      Enterprise Telecommunications
+                    <span className="text-xs font-mono text-muted shrink-0">
+                      {resumeExperience.meta}
                     </span>
                   </div>
-                  <ul className="space-y-2.5 text-sm text-ink-soft list-none pt-2">
-                    {[
-                      "Benchmarked AI and automation approaches for enterprise network operations.",
-                      "Explored Generative AI use cases and evaluated technical feasibility.",
-                      "Developed client-facing, data-driven product pitches.",
-                      "Used network-operations context to shape the NetSense AI prototype.",
-                    ].map((item) => (
+                  <ul className="mt-3 space-y-1.5 text-sm text-ink-soft list-none">
+                    {resumeExperience.bullets.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
                         <span className="w-1.5 h-1.5 bg-accent mt-2 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="text-sm text-muted pt-2 border-t border-border/40">
-                    NetSense AI was built independently as a research prototype; it
-                    was never deployed on Tata Teleservices production
-                    infrastructure nor does it claim proprietary Tata operational
-                    impact.
-                  </p>
                 </Reveal>
 
-                <Reveal delay={80} className="p-6 lg:p-8 bg-surface-card shadow-sm border border-border/20 rounded space-y-4">
-                  <span className="text-[11px] font-mono text-muted uppercase tracking-wider block mb-2">
-                    Education
-                  </span>
+                <Reveal delay={40}>
+                  <ResumeSectionLabel>Selected AI Product Work</ResumeSectionLabel>
                   <div className="space-y-4">
-                    {education.map((edu, i) => (
-                      <div
-                        key={edu.name}
-                        className={`space-y-1 ${i > 0 ? "pt-4 border-t border-border/40" : ""}`}
-                      >
-                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                          <h4 className="text-ink font-semibold">{edu.name}</h4>
-                          <span className="text-xs font-mono text-muted">{edu.years}</span>
+                    {resumeProjects.map((p) => (
+                      <div key={p.name}>
+                        <h4 className="font-sans text-base font-semibold text-ink">{p.name}</h4>
+                        <p className="text-sm text-ink-soft">{p.role}</p>
+                        <p className="mt-0.5 text-xs font-mono text-muted">{p.proof}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+
+                <Reveal delay={80}>
+                  <ResumeSectionLabel>Education</ResumeSectionLabel>
+                  <div className="space-y-4">
+                    {resumeEducation.map((edu) => (
+                      <div key={edu.name}>
+                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
+                          <h4 className="font-sans text-base font-semibold text-ink">{edu.name}</h4>
+                          <span className="text-xs font-mono text-muted shrink-0">{edu.years}</span>
                         </div>
                         <p className="text-sm text-ink-soft">{edu.detail}</p>
                       </div>
                     ))}
                   </div>
+                </Reveal>
+
+                <Reveal delay={120}>
+                  <ResumeSectionLabel>Certifications</ResumeSectionLabel>
+                  <p className="text-sm text-ink-soft leading-relaxed">
+                    {resumeCertifications.join(" · ")}
+                  </p>
+                </Reveal>
+
+                <Reveal delay={160}>
+                  <ResumeSectionLabel>Product &amp; AI</ResumeSectionLabel>
+                  <p className="text-sm text-ink-soft leading-relaxed">
+                    {resumeSkills.join(" · ")}
+                  </p>
                 </Reveal>
               </div>
             </div>
