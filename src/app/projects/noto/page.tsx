@@ -203,11 +203,12 @@ export default function NotoCaseStudy() {
 
                 <Section id="section-07" eyebrow="07 — Real-user testing">
                   <Prose>
-                    Tested with 8 real users — college club coordinators, students, a
-                    software developer, startup team members. (Some testers,
-                    including club coordinators, worked from the same starting
-                    transcript, so they aren&rsquo;t independent scenarios.)
-                    Directional, not statistically significant.
+                    Tested with 8 known people — 3 college club coordinators, 2
+                    students working on projects, 1 software developer, and 2
+                    startup-team members. (Some testers, including club
+                    coordinators, worked from the same starting transcript, so
+                    they aren&rsquo;t independent scenarios.) Directional, not
+                    statistically significant.
                   </Prose>
                   <Quote>&ldquo;The benchmark didn&rsquo;t catch this. Real users did.&rdquo;</Quote>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4 mt-2">
@@ -218,7 +219,22 @@ export default function NotoCaseStudy() {
                       "An owner was wrong in one test — why owner grounding is checked in code and “unclear owner” is a review state, not a guess.",
                       "One unresolved question wasn’t surfaced clearly enough. A known UX gap, not fixed.",
                       "Deadline and dependency ambiguity lingered.",
-                      "The preference-vs-decision failure appeared directly in a test meeting — the one that led to the guardrail above.",
+                      "The preference-vs-decision failure appeared directly in a test meeting — the one that led to the guardrail above. 2/8 participants observed Noto treating something as a decision when they did not consider it one, and 1/8 was unsure.",
+                    ]}
+                  />
+                  <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4 mt-8">
+                    By the numbers (8 participants, overlapping responses — not summed)
+                  </div>
+                  <BulletList
+                    items={[
+                      "Before Noto: 5 described using an AI/recording-based approach, 2 mentioned transcript download if available, and 1 mentioned Google Colab.",
+                      "Most useful: 3/8 pointed to the execution plan, 1/8 to extraction itself, and 4/8 to having everything in one place — the value wasn’t only AI extraction, but the resulting execution information being organized.",
+                      "Action-item clarity: 4/8 usually found action items clear; 4/8 experienced some degree of ambiguity (2/8 sometimes unclear, 2/8 often unclear).",
+                      "Evidence and source quotes: 5/8 found them useful, 3/8 found them useful sometimes.",
+                      "Review habits: 5/8 said they would review AI-generated output before relying on it.",
+                      "Missed information: 2/8 reported that Noto had missed something at least once.",
+                      "Reuse: 6/8 said they would use Noto again if needed.",
+                      "Older UI: 1/8 found the older UI’s appearance unclear. That UI was subsequently simplified.",
                     ]}
                   />
                 </Section>

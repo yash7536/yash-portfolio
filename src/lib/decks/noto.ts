@@ -93,7 +93,7 @@ export const notoDeck: Deck = {
         { value: "8", label: "Real users" },
         { value: "Directional", label: "Not statistically significant" },
       ],
-      note: "Tested with college club coordinators, students, a software developer, and startup team members. Findings: an owner was wrong in one test, one unresolved question wasn't surfaced clearly enough, deadline/dependency ambiguity lingered, and the preference-vs-decision failure appeared directly in a test meeting.",
+      note: "Tested with 3 college club coordinators, 2 students, 1 software developer, and 2 startup-team members. Findings: an owner was wrong in one test; the preference-vs-decision failure appeared directly in a test meeting (2/8 saw Noto treat something as a decision they didn't consider one); 5/8 said they'd review AI output before relying on it; 6/8 said they'd use Noto again.",
     },
     {
       kind: "takeaway",

@@ -5,7 +5,7 @@ import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
 import { Toc } from "@/components/case-study/Toc";
 import { Section, SectionHeading, Prose } from "@/components/case-study/Section";
 import { InlineFlow } from "@/components/case-study/Workflow";
-import { Quote, Note, StatRow } from "@/components/case-study/Callouts";
+import { Quote, Note, StatRow, BulletList } from "@/components/case-study/Callouts";
 import { DataTable } from "@/components/case-study/DataTable";
 import { BarList, Donut } from "@/components/case-study/Charts";
 import { CaseStudyFooterNav } from "@/components/case-study/FooterNav";
@@ -291,25 +291,42 @@ export default function SquadPayCaseStudy() {
                 <Section id="section-08" eyebrow="08 — Real-User Testing">
                   <SectionHeading>Field observation signals</SectionHeading>
                   <p className="font-serif text-lg text-ink-soft leading-relaxed mb-6 max-w-2xl">
-                    Real-user testing surfaced several useful signals: participants
-                    described hesitation around asking friends for repayment, some
-                    needed a quick demonstration before understanding the
-                    product&rsquo;s value, and several requested UPI/GPay integration
-                    for smoother payment completion.
+                    Tested with 12 known people. The testing confirmed the social
+                    friction around asking friends for repayment: some described
+                    friends paying back later, including in cash, while others
+                    normally asked for money at the moment but hesitated depending
+                    on the person or situation. Splitting the bill is easy. Asking
+                    friends to pay you back is awkward.
                   </p>
                   <StatRow
                     stats={[
-                      { value: "6", label: "Showed repayment hesitation" },
-                      { value: "2", label: "Needed a demonstration" },
-                      { value: "3", label: "Found the workflow helpful" },
-                      { value: "3", label: "Requested GPay/UPI" },
+                      { value: "9/12", label: "Found repayment requests an issue" },
+                      { value: "10/12", label: "Would check AI extraction first" },
+                      { value: "12/12", label: "Expected integrated UPI/payment" },
+                      { value: "8/12", label: "Would use SquadPay again" },
                     ]}
                   />
                   <Note>
-                    Note: These observations may overlap, and the testing record
-                    doesn&rsquo;t establish a verified total sample size — no
-                    combined count or percentage is reported.
+                    12 known people, not a statistically representative sample.
+                    Reasons participants gave for repayment hesitation included
+                    concern that friends might get offended, friends saying
+                    they&rsquo;d already paid for something previously, and friends
+                    saying they didn&rsquo;t have money at the moment. Checking AI
+                    extraction first is a review habit, not a statement that
+                    participants distrusted AI.
                   </Note>
+                  <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4 mt-8">
+                    By the numbers (overlapping signals — not summed)
+                  </div>
+                  <BulletList
+                    items={[
+                      "Before SquadPay: 3/12 said they’d otherwise use other apps or ask friends to pay directly.",
+                      "AI extraction failure: 3/12 reported an extraction issue where not all dishes were added.",
+                      "What was useful: 3/12 pointed to reminders to pay, 2/12 to AI bill scanning, 4/12 to the ease of adding dishes/amounts among selected people, and 3/12 to the simple UI.",
+                      "Older UI (since fixed): 6/12 found adding dishes or people somewhat unclear, 1/12 found it confusing because it didn’t behave like a typical payment app, 4/12 needed direct help, and 3/12 needed to work out the item-level splitting interaction — others figured it out themselves.",
+                      "Design feedback (since applied): asked what they’d change, 4/12 said nothing, 4/12 wanted a more minimal visual treatment, and 4/12 mentioned the logo.",
+                    ]}
+                  />
                 </Section>
 
                 <Section id="section-09" eyebrow="09 — Product Decisions, Value & Limitations">
