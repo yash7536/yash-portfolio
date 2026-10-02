@@ -227,8 +227,6 @@ export default function NotoCaseStudy() {
                     conflicting options turned into a decision. Each is handled
                     with deterministic validation and covered by the regression
                     suite (41/41 — a targeted regression result, not an F1 score).
-                    Only the preference-vs-decision failure is documented as one the
-                    frozen benchmark did not catch.
                   </Note>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4 mt-8">
                     By the numbers (8 participants, overlapping responses — not summed)
