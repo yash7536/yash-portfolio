@@ -190,7 +190,7 @@ export default function NetSenseCaseStudy() {
                     The score wasn&rsquo;t simply wrong — 0.16 was genuinely below
                     threshold at that instant. A single point-in-time score can look
                     healthy while the corridor is oscillating or intermittently
-                    unstable over time — a temporal blind spot, not a bad threshold.
+                    unstable over time — a temporal blind spot.
                     Kept visible rather than tuned away.
                   </Prose>
                 </Section>
