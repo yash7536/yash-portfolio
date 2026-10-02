@@ -45,10 +45,10 @@ export const projects: ProjectSummary[] = [
     name: "NetSense AI",
     tagline: "Network Fault Detection & Incident Investigation",
     description:
-      "A network-operations prototype connecting telemetry anomalies to the evidence and incident context engineers need to investigate them. Deterministic, rule-based scoring on synthetic telemetry.",
+      "A network-operations prototype connecting telemetry anomalies to the evidence and incident context engineers need to investigate them. A Python rule-based scoring engine on synthetic telemetry, with a reproducible evaluation.",
     failureQuote: "A healthy score sat next to an active high-severity incident.",
     failureDetail:
-      "A point-in-time composite anomaly score read 0.16 (healthy), while an oscillating, unstable corridor experienced an active, high-severity BGP Peer Dampening incident right beside it.",
+      "A point-in-time composite anomaly score read 0.16 (healthy) on an oscillating corridor, while the authored demo data held an open, high-severity BGP Peer Dampening incident on that same corridor.",
     proofLine: "6 synthetic telemetry profiles · 5/5 resolvable-scenario agreement",
     liveUrl: "https://netsense-ai-bclu.vercel.app",
     githubUrl: "https://github.com/yash7536/netsense-ai",

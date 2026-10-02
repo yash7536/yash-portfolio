@@ -112,8 +112,12 @@ export default function NetSenseCaseStudy() {
                     The current detection system is deterministic and rule-based —
                     not a trained model. Telemetry (latency, packet loss, jitter,
                     bandwidth) sampled every 30 minutes across 6 links, with a 48-hour
-                    trailing window and a 12-hour forecast/context horizon, on
-                    synthetic/demo data.
+                    trailing window and a 12-hour forecast/context horizon (a
+                    synthetic continuation, not a forecasting model), on
+                    synthetic/demo data. The scorer and the seeded telemetry
+                    generator are written in Python (standard library only); the
+                    React app&rsquo;s TypeScript scorer is checked against that
+                    engine for exact parity.
                   </Prose>
                   <DataTable
                     columns={["Telemetry Metric", "Weight", "Sampling Window"]}
@@ -168,6 +172,8 @@ export default function NetSenseCaseStudy() {
                   <p className="text-sm text-muted mt-6">
                     No telemetry-to-fault classifier, no dynamic assignment
                     algorithm, no autonomous incident creation or remediation today.
+                    The rule-based workflow in the engine only reads and links these
+                    records, labelling each as computed or authored.
                   </p>
                 </Section>
 
@@ -182,10 +188,14 @@ export default function NetSenseCaseStudy() {
                   </Prose>
                   <Prose>
                     The score wasn&rsquo;t simply wrong — 0.16 was genuinely below
-                    threshold at that instant. A single point-in-time score can look
-                    healthy while the corridor is oscillating or intermittently
-                    unstable over time — a temporal blind spot, not a bad threshold.
-                    Kept visible rather than tuned away.
+                    threshold at that instant. The scorer reads one instant and has
+                    no memory of the pattern, so a corridor that oscillates or is
+                    intermittently unstable can look healthy. Re-scoring every
+                    sample in the trailing 24 hours with the same rule never
+                    reached the threshold either (peak 0.2169 against 0.22): a
+                    blind spot for intermittent instability in single-snapshot
+                    scoring. Whether window-based scoring would catch it is
+                    untested. Kept visible rather than tuned away.
                   </Prose>
                 </Section>
 
@@ -194,7 +204,9 @@ export default function NetSenseCaseStudy() {
                   <Prose>
                     Six designed telemetry profiles — bifurcation, loss degradation,
                     saturation, stable, recovering, oscillation — a designed
-                    evaluation set, not a production benchmark.
+                    evaluation set, not a production benchmark. The expected states
+                    were pre-registered before the Python engine was built, and the
+                    whole evaluation reproduces from the repo with one command.
                   </Prose>
                   <div className="flex flex-col gap-2 p-4 border border-border/60 max-w-xl">
                     <span className="text-xs font-mono text-muted uppercase tracking-wider">
@@ -202,15 +214,29 @@ export default function NetSenseCaseStudy() {
                     </span>
                     <span className="font-serif text-2xl text-ink">5/5 agreement</span>
                     <p className="text-sm text-muted-2">
-                      For scenarios where the expected t=0 state was resolvable (of
-                      the six profiles tested). This is rule-based detection
-                      agreement, not ML accuracy.
+                      For scenarios where the expected t=0 state was resolvable (5
+                      of the six profiles; oscillation is not scored because its
+                      state at a single instant depends on phase). This is
+                      rule-based detection agreement, not ML accuracy.
                     </p>
                   </div>
                   <Prose>
                     The oscillation profile scored ≈ 0.16 and classified healthy
                     despite intermittent instability — the same failure pattern as
                     INC-395.
+                  </Prose>
+                  <Prose>
+                    The Python engine generates the telemetry the React app
+                    displays, and exact-equality parity tests (including 900
+                    scoring cases) hold the app&rsquo;s TypeScript scorer to it. The
+                    method, results and limitations are written up in the repo&rsquo;s{" "}
+                    <a
+                      href="https://github.com/yash7536/netsense-ai/blob/main/docs/EVALUATION.md"
+                      className="text-accent hover:underline underline-offset-4"
+                    >
+                      docs/EVALUATION.md
+                    </a>
+                    .
                   </Prose>
                   <div className="flex flex-col sm:flex-row items-center gap-8 pt-4 pb-2">
                     <Donut
@@ -236,7 +262,8 @@ export default function NetSenseCaseStudy() {
                       </div>
                       <p className="text-sm text-muted max-w-md">
                         Consistency audit: 10 consistent, 2 flagged, 1 N/A of 13
-                        records (7 predictions, 6 incidents). Kept separate from
+                        records (7 predictions, 6 incidents), using an
+                        evaluation-only heuristic. Kept separate from
                         detection-agreement.
                       </p>
                     </div>
@@ -250,7 +277,8 @@ export default function NetSenseCaseStudy() {
                   <Prose>
                     Rolling-window, variance-aware temporal scoring — weighing recent
                     behavior, variance and oscillation rather than a single snapshot.
-                    Future work; not yet implemented.
+                    Future work; not yet implemented, and its value would need its
+                    own pre-registered evaluation.
                   </Prose>
                 </Section>
 
