@@ -64,7 +64,7 @@ export const netsenseDeck: Deck = {
       eyebrow: "05 — The failure",
       title: "The failure",
       quote: "A healthy score sat next to an active high-severity incident.",
-      body: "Incident INC-395, Bengaluru–Hyderabad Core corridor: live anomaly score ≈ 0.16 (healthy/no strong live signal) while the linked incident record showed active, investigating, high severity, fault label “BGP Peer Dampening.” The scorer reads one instant with no memory of the pattern, and re-scoring every sample in the trailing 24 hours never reached the threshold either (peak 0.2169 vs 0.22) — a blind spot for intermittent instability, kept visible rather than tuned away.",
+      body: "Incident INC-395, Bengaluru–Hyderabad Core corridor: live anomaly score ≈ 0.16 (healthy/no strong live signal) while the linked incident record showed active, investigating, high severity, fault label “BGP Peer Dampening.” A single point-in-time score can look healthy while a corridor is oscillating or intermittently unstable over time — a temporal blind spot, kept visible rather than tuned away.",
       screenshot: {
         src: "/screenshots/netsense/incidents.png",
         alt: "NetSense AI incidents queue showing incident INC-395 on the Bengaluru–Hyderabad Core link, fault profile BGP Peer Dampening, high severity, status investigating",
@@ -76,7 +76,7 @@ export const netsenseDeck: Deck = {
       eyebrow: "06 — What changed",
       title: "Kept visible, not tuned away",
       body: "Rather than quietly raising the threshold to hide the blind spot, the failure mode was documented and scoped as future work: rolling-window, variance-aware temporal scoring — weighing recent behavior and oscillation instead of a single snapshot.",
-      note: "This is future direction only — it has not been implemented, and its value is untested.",
+      note: "This is future direction only — it has not been implemented.",
     },
     {
       kind: "evaluation",

@@ -188,14 +188,10 @@ export default function NetSenseCaseStudy() {
                   </Prose>
                   <Prose>
                     The score wasn&rsquo;t simply wrong — 0.16 was genuinely below
-                    threshold at that instant. The scorer reads one instant and has
-                    no memory of the pattern, so a corridor that oscillates or is
-                    intermittently unstable can look healthy. Re-scoring every
-                    sample in the trailing 24 hours with the same rule never
-                    reached the threshold either (peak 0.2169 against 0.22): a
-                    blind spot for intermittent instability in single-snapshot
-                    scoring. Whether window-based scoring would catch it is
-                    untested. Kept visible rather than tuned away.
+                    threshold at that instant. A single point-in-time score can look
+                    healthy while the corridor is oscillating or intermittently
+                    unstable over time — a temporal blind spot, not a bad threshold.
+                    Kept visible rather than tuned away.
                   </Prose>
                 </Section>
 
@@ -206,7 +202,7 @@ export default function NetSenseCaseStudy() {
                     saturation, stable, recovering, oscillation — a designed
                     evaluation set, not a production benchmark. The expected states
                     were pre-registered before the Python engine was built, and the
-                    whole evaluation reproduces from the repo with one command.
+                    whole evaluation reproduces from the repo.
                   </Prose>
                   <div className="flex flex-col gap-2 p-4 border border-border/60 max-w-xl">
                     <span className="text-xs font-mono text-muted uppercase tracking-wider">
@@ -277,8 +273,7 @@ export default function NetSenseCaseStudy() {
                   <Prose>
                     Rolling-window, variance-aware temporal scoring — weighing recent
                     behavior, variance and oscillation rather than a single snapshot.
-                    Future work; not yet implemented, and its value would need its
-                    own pre-registered evaluation.
+                    Future work; not yet implemented.
                   </Prose>
                 </Section>
 
