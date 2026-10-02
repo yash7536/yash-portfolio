@@ -6,7 +6,7 @@ export const site = {
   name: "Vishnu Yash Pandey",
   email: "yashpandey3300@gmail.com",
   github: "https://github.com/yash7536",
-  linkedin: "https://linkedin.com/in/vishnuyashpandey",
+  linkedin: "https://www.linkedin.com/in/vishnu-yash-pandey/",
   footerTagline: "AI Product Management · Systems · Evaluation.",
 } as const;
 

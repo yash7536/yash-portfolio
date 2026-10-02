@@ -54,11 +54,9 @@ const resumeExperience = {
   role: "AI Product Manager Intern",
   meta: "May–Jun 2026 · Noida",
   bullets: [
-    "Competitive benchmarking",
-    "Data-backed product & client pitches",
-    "PRDs, user stories & acceptance criteria",
-    "GenAI exploration",
-    "Network-operations exposure",
+    "Benchmarked 5+ competing products on features, pricing, and positioning; turned the findings into 3 pitches presented to clients and internal stakeholders",
+    "Wrote 2 PRDs with 8+ user stories and acceptance criteria in Agile, with input from 5+ stakeholders",
+    "Scoped NetSense AI (independent prototype) from 3 fault-management pain points documented during the internship",
   ],
 };
 
@@ -83,35 +81,35 @@ const resumeProjects = [
 const resumeEducation = [
   {
     name: "Amity University Lucknow",
-    years: "2023–2027",
-    detail: "B.Tech — Computer Science & Engineering · CGPA 7.10",
+    years: "2023–Expected 2027",
+    detail: "B.Tech — Computer Science & Engineering · CGPA 7.10/10.0",
   },
   {
     name: "City Montessori School, Lucknow",
-    years: "2021",
+    years: "2019–2021",
     detail: "ISC — PCM · 90%",
   },
 ];
 
 const resumeCertifications = [
-  "IBM AI Product Manager",
-  "EA Product Management",
-  "Google Agile PM",
-  "Datacom Partnering with AI",
-  "Adobe University Hackathon 2026",
+  "IBM AI Product Manager Professional Certificate",
+  "Google Agile Project Management",
+  "Adobe University Hackathon 2026 (participant)",
 ];
 
 const resumeSkills = [
   "AI Product Management",
-  "Product Discovery",
-  "Product Strategy",
-  "PRDs",
-  "AI Evaluation",
   "LLM Evaluation",
-  "User Testing",
+  "Gold Sets",
+  "Regression Testing",
   "Guardrails",
   "Human-in-the-Loop",
   "Generative AI",
+  "PRDs",
+  "User Stories",
+  "Acceptance Criteria",
+  "Prioritization",
+  "User Testing",
   "Agile",
 ];
 
