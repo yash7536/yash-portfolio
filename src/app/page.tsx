@@ -91,10 +91,15 @@ const resumeEducation = [
   },
 ];
 
+const resumeAchievements = [
+  "Built and shipped 3 live AI products solo, each with a demo, a repo, and a documented evaluation",
+  "Lifted Noto F1 by 10.2 pts (prompt-only versions) and exposed SquadPay’s gap: 100% of parsed receipts reconciled, only 5/15 (33%) fully correct",
+  "Participated in Adobe University Hackathon 2026 (Aug 31, 2026)",
+];
+
 const resumeCertifications = [
   "IBM AI Product Manager Professional Certificate",
   "Google Agile Project Management",
-  "Adobe University Hackathon 2026 (participant)",
 ];
 
 const resumeSkills = [
@@ -316,6 +321,18 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+                </Reveal>
+
+                <Reveal delay={60}>
+                  <ResumeSectionLabel>Achievements</ResumeSectionLabel>
+                  <ul className="space-y-1.5 text-sm text-ink-soft list-none">
+                    {resumeAchievements.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <span className="w-1.5 h-1.5 bg-accent mt-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </Reveal>
 
                 <Reveal delay={80}>

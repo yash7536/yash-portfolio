@@ -217,11 +217,19 @@ export default function NotoCaseStudy() {
                   <BulletList
                     items={[
                       "An owner was wrong in one test — why owner grounding is checked in code and “unclear owner” is a review state, not a guess.",
-                      "One unresolved question wasn’t surfaced clearly enough. A known UX gap, not fixed.",
                       "Deadline and dependency ambiguity lingered.",
                       "The preference-vs-decision failure appeared directly in a test meeting — the one that led to the guardrail above. 2/8 participants observed Noto treating something as a decision when they did not consider it one, and 1/8 was unsure.",
                     ]}
                   />
+                  <Note>
+                    Directional testing surfaced three failure modes — wrong
+                    owner identification, a preference treated as a decision, and
+                    conflicting options turned into a decision. Each is handled
+                    with deterministic validation and covered by the regression
+                    suite (41/41 — a targeted regression result, not an F1 score).
+                    Only the preference-vs-decision failure is documented as one the
+                    frozen benchmark did not catch.
+                  </Note>
                   <div className="text-xs font-mono uppercase tracking-widest text-muted mb-4 mt-8">
                     By the numbers (8 participants, overlapping responses — not summed)
                   </div>

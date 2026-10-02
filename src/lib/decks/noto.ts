@@ -93,7 +93,7 @@ export const notoDeck: Deck = {
         { value: "8", label: "Real users" },
         { value: "Directional", label: "Not statistically significant" },
       ],
-      note: "Tested with 3 college club coordinators, 2 students, 1 software developer, and 2 startup-team members. Findings: an owner was wrong in one test; the preference-vs-decision failure appeared directly in a test meeting (2/8 saw Noto treat something as a decision they didn't consider one); 5/8 said they'd review AI output before relying on it; 6/8 said they'd use Noto again.",
+      note: "Tested with 3 college club coordinators, 2 students, 1 software developer, and 2 startup-team members. Testing surfaced three failure modes — wrong owner, a preference treated as a decision (2/8 saw Noto treat something as a decision they didn't consider one), and conflicting options turned into a decision — each handled with deterministic validation (41/41 regression tests, not an F1 score). 5/8 said they'd review AI output before relying on it; 6/8 said they'd use Noto again.",
     },
     {
       kind: "takeaway",
