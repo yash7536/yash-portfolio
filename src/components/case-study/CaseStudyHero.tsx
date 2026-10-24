@@ -18,7 +18,7 @@ export function CaseStudyHero({
   stats: Stat[];
   liveUrl: string;
   githubUrl: string;
-  deckHref: string;
+  deckHref?: string;
 }) {
   return (
     <header className="pb-12 pt-12 md:pt-16">
@@ -54,12 +54,14 @@ export function CaseStudyHero({
       </Reveal>
 
       <Reveal delay={210} className="flex flex-wrap items-center gap-3 sm:gap-4">
+        {deckHref && (
         <Link
           href={deckHref}
           className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded border border-ink bg-ink text-white hover:bg-accent hover:border-accent transition-colors"
         >
           View Story
         </Link>
+        )}
         <a
           href={liveUrl}
           target="_blank"
