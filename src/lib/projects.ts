@@ -2,7 +2,9 @@
 // study hero, deck slide 1/5). Keeping them here once avoids the drift that
 // happened across the old Stitch exports (mismatched labels, stats, links).
 export type ProjectSummary = {
-  slug: "noto" | "squadpay" | "netsense-ai";
+  slug: "noto" | "squadpay" | "netsense-ai" | "kisht";
+  /** false when the project has no slide story yet */
+  hasStory?: boolean;
   name: string;
   tagline: string;
   description: string;
@@ -52,6 +54,20 @@ export const projects: ProjectSummary[] = [
     proofLine: "6 synthetic telemetry profiles · 5/5 resolvable-scenario agreement",
     liveUrl: "https://netsense-ai-bclu.vercel.app",
     githubUrl: "https://github.com/yash7536/netsense-ai",
+  },
+  {
+    slug: "kisht",
+    name: "Kisht",
+    tagline: "Hinglish / Marathi-English EMI Reminder Voice Agent",
+    description:
+      "A voice agent for one narrow job, a polite pre-due EMI reminder call for a fictional lender, and the evaluation that decides whether it should launch. The model proposes each reply; code checks every number, handoff and promised date before the borrower hears it.",
+    failureQuote: "The launch memo said ready while two targets were failing.",
+    failureDetail:
+      "In a test run with the model faked, the memo only counted the critical gates. Two non-critical targets missed and it still read “scripted gates met”. Fixed, and a test now covers it. The eval harness needs evals too.",
+    proofLine: "88 scripted borrower scenarios × 3 runs · 4 language varieties · 167 automated tests · live-model results: not run yet",
+    liveUrl: "https://kisht-green.vercel.app",
+    githubUrl: "https://github.com/yash7536/kisht",
+    hasStory: false,
   },
 ];
 
