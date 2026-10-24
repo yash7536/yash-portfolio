@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ProjectSummary } from "@/lib/projects";
+import { briefs } from "@/lib/briefs";
 
 export function ProjectCard({
   project,
@@ -26,6 +27,13 @@ export function ProjectCard({
             </span>
           </div>
           <p className="text-ink-soft leading-relaxed mb-5">{project.description}</p>
+
+          <div className="mb-5">
+            <span className="text-[11px] font-mono text-accent uppercase tracking-wider block mb-1">
+              Why AI
+            </span>
+            <p className="text-sm text-ink-soft">{briefs[project.slug].whyAiShort}</p>
+          </div>
 
           <div className="pl-4 py-1 mb-5 border-l-2 border-accent/70">
             <span className="text-[11px] font-mono text-muted uppercase tracking-wider block mb-1">
