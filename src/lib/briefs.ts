@@ -16,7 +16,7 @@ export type CaseBriefData = {
   tradeoffs: Tradeoff[];
 };
 
-export const briefs: Record<"noto" | "squadpay" | "netsense-ai", CaseBriefData> = {
+export const briefs: Record<"noto" | "squadpay" | "netsense-ai" | "kisht", CaseBriefData> = {
   noto: {
     problem:
       "A transcript records what people said, not what was decided. Teams leave a meeting unsure who owns which action, by when, and whether a statement was a decision or only a preference, so follow-up drifts into memory and chat threads.",
@@ -110,6 +110,43 @@ export const briefs: Record<"noto" | "squadpay" | "netsense-ai", CaseBriefData> 
         decision: "Point-in-time score first, rolling window later",
         cost: "Oscillating links aren’t scored correctly yet.",
         why: "A simpler first version made the blind spot measurable; variance-aware scoring is the planned fix.",
+      },
+    ],
+  },
+  kisht: {
+    problem:
+      "A pre-due reminder is the cheapest point in collections: nothing is missed yet, and most borrowers just need a nudge and a date. Lenders use SMS, which gets ignored, or human callers, which are expensive. Many borrowers in Pune and Mumbai code-mix Hinglish, Marathi-English and Hindi, and aren’t comfortable on an English call.",
+    whyAi:
+      "Borrowers answer in free-form, code-mixed speech, interrupt, and correct themselves mid-sentence (“8 ko… nahi nahi 10 ko de dunga”). They ask off-script questions. A keypad IVR tree can’t hold that. But on a loan call the model is also the main risk: it can invent a figure, miss a hardship or third-party handoff, record the wrong date, or sound like pressure. So the model only proposes, and code decides.",
+    whyAiShort:
+      "Understanding code-mixed, self-correcting speech. The model proposes each reply; code checks every number, handoff and date first.",
+    solution:
+      "Gemini drafts each reply as JSON. Code checks it before it is spoken: a number guard (anything not on the policy card is blocked), a handoff backstop, a promise-date parser that handles self-corrections, and a state machine. A blocked draft gets one retry, then a fixed handoff line. 88 scripted borrower scenarios in four language varieties run three times each, with human labelling, a failure taxonomy and a launch memo that can say No-go. Live-model results have not been run yet.",
+    tradeoffs: [
+      {
+        decision: "A fixed policy card instead of free answers",
+        cost: "The agent can’t answer many reasonable questions, so more calls go to a human.",
+        why: "A confident wrong figure on a loan call is worse than a handoff, and “invented number” becomes checkable in code.",
+      },
+      {
+        decision: "Handoff-first: when in doubt, hand off",
+        cost: "Lower containment. 49 of the 88 scenarios expect a handoff.",
+        why: "A missed hardship or third-party handoff can mean a complaint or a privacy breach; an extra handoff is one more human call. Unnecessary handoffs are still measured.",
+      },
+      {
+        decision: "Text pipeline with browser speech instead of a native audio model",
+        cost: "Slower, and limited by browser speech recognition on code-mixed audio.",
+        why: "Every guard needs text. With speech-to-speech the words would reach the borrower before code could check them.",
+      },
+      {
+        decision: "The handoff detector is hidden from the model",
+        cost: "Some handoffs use a fixed line instead of a natural one.",
+        why: "Otherwise the model’s own handoff score would just measure the detector.",
+      },
+      {
+        decision: "Scripted borrowers, each scenario run three times",
+        cost: "Scripted borrowers don’t adapt, and three runs cost three times as much.",
+        why: "Reproducible results and a consistency number. Adaptiveness is left to a real-user test.",
       },
     ],
   },
