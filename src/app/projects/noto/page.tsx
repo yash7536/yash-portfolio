@@ -10,6 +10,8 @@ import { DataTable } from "@/components/case-study/DataTable";
 import { BarList } from "@/components/case-study/Charts";
 import { CaseStudyFooterNav } from "@/components/case-study/FooterNav";
 import { getProject } from "@/lib/projects";
+import { briefs } from "@/lib/briefs";
+import { CaseBrief, TradeoffTable } from "@/components/case-study/CaseBrief";
 
 export const metadata: Metadata = {
   title: "Noto — Case Study | Vishnu Yash Pandey",
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 const toc = [
+  { id: "section-00", label: "At a glance" },
   { id: "section-01", label: "01 — The problem" },
   { id: "section-02", label: "02 — The insight" },
   { id: "section-03", label: "03 — Where AI stops" },
@@ -26,7 +29,8 @@ const toc = [
   { id: "section-06", label: "06 — Evaluation" },
   { id: "section-07", label: "07 — Real-user testing" },
   { id: "section-08", label: "08 — Product decisions" },
-  { id: "section-09", label: "09 — Limitations & Docs" },
+  { id: "section-09", label: "09 — Tradeoffs" },
+  { id: "section-10", label: "10 — Limitations & Docs" },
 ];
 
 export default function NotoCaseStudy() {
@@ -55,6 +59,10 @@ export default function NotoCaseStudy() {
               <Toc items={toc} />
 
               <div className="flex-1 min-w-0 max-w-3xl">
+                <Section id="section-00" eyebrow="At a glance — problem, why AI, solution, tradeoffs">
+                  <CaseBrief brief={briefs["noto"]} />
+                </Section>
+
                 <Section id="section-01" eyebrow="01 — The problem">
                   <SectionHeading>
                     A transcript records what people said. It doesn&rsquo;t record what
@@ -284,7 +292,12 @@ export default function NotoCaseStudy() {
                   </div>
                 </Section>
 
-                <Section id="section-09" eyebrow="09 — Limitations & Docs">
+                <Section id="section-09" eyebrow="09 — Tradeoffs">
+                  <SectionHeading>What each decision cost, and why it was worth it</SectionHeading>
+                  <TradeoffTable brief={briefs["noto"]} />
+                </Section>
+
+                <Section id="section-10" eyebrow="10 — Limitations & Docs">
                   <BulletList
                     items={[
                       "Full benchmark not rerun with the later guardrail; the 41/41 regression tests show it works on known cases, not that overall accuracy improved.",
