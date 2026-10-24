@@ -10,6 +10,8 @@ import { DataTable } from "@/components/case-study/DataTable";
 import { BarList, Donut } from "@/components/case-study/Charts";
 import { CaseStudyFooterNav } from "@/components/case-study/FooterNav";
 import { getProject } from "@/lib/projects";
+import { briefs } from "@/lib/briefs";
+import { CaseBrief, TradeoffTable } from "@/components/case-study/CaseBrief";
 
 export const metadata: Metadata = {
   title: "SquadPay — Case Study | Vishnu Yash Pandey",
@@ -18,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 const toc = [
+  { id: "section-00", label: "At a glance" },
   { id: "section-01", label: "01 — The Problem" },
   { id: "section-02", label: "02 — The Workflow" },
   { id: "section-03", label: "03 — The Failure" },
@@ -26,7 +29,8 @@ const toc = [
   { id: "section-06", label: "06 — Where extraction still breaks" },
   { id: "section-07", label: "07 — Guardrail Stack" },
   { id: "section-08", label: "08 — Real-User Testing" },
-  { id: "section-09", label: "09 — Product Decisions" },
+  { id: "section-09", label: "09 — Tradeoffs" },
+  { id: "section-10", label: "10 — Product Decisions" },
 ];
 
 export default function SquadPayCaseStudy() {
@@ -55,6 +59,10 @@ export default function SquadPayCaseStudy() {
               <Toc items={toc} />
 
               <div className="flex-1 min-w-0 max-w-3xl">
+                <Section id="section-00" eyebrow="At a glance — problem, why AI, solution, tradeoffs">
+                  <CaseBrief brief={briefs["squadpay"]} />
+                </Section>
+
                 <Section id="section-01" eyebrow="01 — The Problem">
                   <SectionHeading>
                     The painful part isn&rsquo;t the split. It&rsquo;s the follow-up.
@@ -329,7 +337,12 @@ export default function SquadPayCaseStudy() {
                   />
                 </Section>
 
-                <Section id="section-09" eyebrow="09 — Product Decisions, Value & Limitations">
+                <Section id="section-09" eyebrow="09 — Tradeoffs">
+                  <SectionHeading>What each decision cost, and why it was worth it</SectionHeading>
+                  <TradeoffTable brief={briefs["squadpay"]} />
+                </Section>
+
+                <Section id="section-10" eyebrow="10 — Product Decisions, Value & Limitations">
                   <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-2">
                       <span className="text-xs font-mono uppercase tracking-wider text-muted">
