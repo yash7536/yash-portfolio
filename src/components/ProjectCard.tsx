@@ -53,12 +53,14 @@ export function ProjectCard({
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
+          {project.hasStory !== false && (
           <Link
             href={`/projects/${project.slug}/story`}
             className="px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded border border-ink bg-ink text-white hover:bg-accent hover:border-accent transition-colors inline-flex items-center"
           >
             View Story
           </Link>
+          )}
           <Link
             href={`/projects/${project.slug}`}
             className="px-5 py-2.5 text-xs font-mono uppercase tracking-wider rounded border border-ink text-ink bg-transparent hover:bg-surface-2 transition-colors inline-flex items-center"
