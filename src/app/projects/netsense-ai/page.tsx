@@ -358,7 +358,7 @@ export default function NetSenseCaseStudy() {
 
             <CaseStudyFooterNav
               prev={{ label: "SquadPay", href: "/projects/squadpay" }}
-              next={{ label: "All work", href: "/#selected-work" }}
+              next={{ label: "Kisht", href: "/projects/kisht" }}
             />
           </article>
         </div>
